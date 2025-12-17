@@ -508,7 +508,7 @@ const JiraWorkflow: React.FC = () => {
               <Flash size={22} color="#f97316" variant="Bold" />
             </div>
             <div className="stat-content">
-              <span className="stat-value">95%</span>
+              <span className="stat-value">100%</span>
               <span className="stat-label">Success Rate</span>
             </div>
           </div>
