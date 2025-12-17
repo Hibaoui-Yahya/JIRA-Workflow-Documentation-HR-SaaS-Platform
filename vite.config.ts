@@ -4,4 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/JIRA-Workflow-Documentation-HR-SaaS-Platform/',
 })
