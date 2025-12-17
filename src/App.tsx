@@ -362,6 +362,92 @@ const JiraWorkflow: React.FC = () => {
     }
   ];
 
+  // Scrum Elements
+  const scrumElements = [
+    {
+      title: 'Sprint',
+      icon: Refresh2,
+      color: '#6366f1',
+      bgColor: '#eef2ff',
+      description: 'A time-boxed iteration (usually 2 weeks) where a potentially releasable product increment is created.',
+      keyPoints: ['Fixed duration', 'Cannot be extended', 'Has a clear Sprint Goal']
+    },
+    {
+      title: 'Daily Standup',
+      icon: People,
+      color: '#22c55e',
+      bgColor: '#f0fdf4',
+      description: '15-minute daily meeting where team members synchronize activities and create a plan for the next 24 hours.',
+      keyPoints: ['What did I do yesterday?', 'What will I do today?', 'Any blockers?']
+    },
+    {
+      title: 'Sprint Planning',
+      icon: Calendar,
+      color: '#f59e0b',
+      bgColor: '#fffbeb',
+      description: 'Collaborative meeting to define the Sprint Goal and select Product Backlog items for the Sprint.',
+      keyPoints: ['Define Sprint Goal', 'Select backlog items', 'Plan the work']
+    },
+    {
+      title: 'Sprint Review',
+      icon: Eye,
+      color: '#8b5cf6',
+      bgColor: '#f5f3ff',
+      description: 'Meeting at sprint end to inspect the increment and adapt the Product Backlog if needed.',
+      keyPoints: ['Demo working software', 'Gather feedback', 'Update backlog']
+    },
+    {
+      title: 'Sprint Retrospective',
+      icon: MessageQuestion,
+      color: '#ec4899',
+      bgColor: '#fdf2f8',
+      description: 'Meeting for the Scrum Team to inspect itself and create an improvement plan.',
+      keyPoints: ['What went well?', 'What needs improvement?', 'Action items']
+    },
+    {
+      title: 'Product Backlog',
+      icon: Layer,
+      color: '#0ea5e9',
+      bgColor: '#f0f9ff',
+      description: 'Ordered list of everything that is known to be needed in the product.',
+      keyPoints: ['Prioritized by PO', 'Living document', 'Single source of truth']
+    }
+  ];
+
+  // Tips for Scrum
+  const scrumTips = [
+    {
+      title: 'Keep Sprints Short',
+      description: '2-week sprints provide faster feedback loops and reduce risk of going off-track.',
+      icon: Timer1
+    },
+    {
+      title: 'Protect the Sprint',
+      description: 'Once a sprint starts, avoid adding new work. Scope changes should wait for next sprint.',
+      icon: Shield
+    },
+    {
+      title: 'Embrace Transparency',
+      description: 'Make work visible using JIRA boards. Everyone should see progress and blockers.',
+      icon: Eye
+    },
+    {
+      title: 'Focus on Outcomes',
+      description: 'Measure success by delivered value, not just completed tasks or velocity.',
+      icon: Chart
+    },
+    {
+      title: 'Continuous Improvement',
+      description: 'Use retrospectives to identify one actionable improvement each sprint.',
+      icon: Refresh2
+    },
+    {
+      title: 'Collaborate Daily',
+      description: 'Keep standups focused. Use them for coordination, not status reports to managers.',
+      icon: People
+    }
+  ];
+
   // Diagram nodes for interactive hierarchy
   const diagramNodes: DiagramNode[] = [
     {
@@ -1012,6 +1098,65 @@ const JiraWorkflow: React.FC = () => {
                   </div>
                 );
               })}
+            </div>
+
+            {/* Scrum Elements */}
+            <div className="scrum-elements-section">
+              <div className="section-header">
+                <h2>Scrum Elements</h2>
+                <p>Core components of the Scrum framework</p>
+              </div>
+              <div className="scrum-elements-grid">
+                {scrumElements.map((element) => {
+                  const Icon = element.icon;
+                  return (
+                    <div
+                      key={element.title}
+                      className="scrum-element-card"
+                      style={{ '--accent-color': element.color, '--bg-color': element.bgColor } as React.CSSProperties}
+                    >
+                      <div className="element-header">
+                        <div className="element-icon-wrapper" style={{ background: element.bgColor }}>
+                          <Icon size={24} color={element.color} variant="Bold" />
+                        </div>
+                        <h3>{element.title}</h3>
+                      </div>
+                      <p className="element-description">{element.description}</p>
+                      <div className="element-key-points">
+                        {element.keyPoints.map((point, i) => (
+                          <span key={i} className="key-point-tag" style={{ background: element.bgColor, color: element.color }}>
+                            {point}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Tips For Scrum */}
+            <div className="scrum-tips-section">
+              <div className="section-header">
+                <h2>💡 Tips For Scrum Success</h2>
+                <p>Pro tips to improve your Scrum implementation</p>
+              </div>
+              <div className="scrum-tips-grid">
+                {scrumTips.map((tip) => {
+                  const Icon = tip.icon;
+                  return (
+                    <div key={tip.title} className="tip-card">
+                      <div className="tip-icon-wrapper">
+                        <Icon size={20} color="#6366f1" variant="Bold" />
+                      </div>
+                      <div className="tip-content">
+                        <h4>{tip.title}</h4>
+                        <p>{tip.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             {/* HR Platform Specifics */}
